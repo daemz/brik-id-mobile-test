@@ -13,6 +13,32 @@ import {navigationRef} from '@utils/navigators';
 import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
+import Bugsnag from '@bugsnag/react-native';
+import {getVersion, getBuildNumber} from 'react-native-device-info';
+
+Bugsnag.start({
+  metadata: {
+    project: {
+      name: 'Brik.id test code',
+      appVersion: getVersion(),
+      appBuildNumber: getBuildNumber(),
+    },
+  },
+  onError: event => {
+    event.addMetadata('project', {
+      name: 'Brik.id test code',
+      appVersion: getVersion(),
+      appBuildNumber: getBuildNumber(),
+    });
+
+    // Return `false` if you'd like to stop this error being reported
+    return true;
+  },
+});
+
+const ErrorBoundary = Bugsnag.getPlugin('react').createErrorBoundary(React);
+
+Bugsnag.notify(new Error('Test error'));
 
 const App = (): React.ReactElement => {
   const queryClient = new QueryClient();
@@ -65,4 +91,8 @@ const App = (): React.ReactElement => {
   );
 };
 
-export default App;
+export default () => (
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>
+);
