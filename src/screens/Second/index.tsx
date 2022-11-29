@@ -20,7 +20,7 @@ const SecondScreen = () => {
 
   useHeader({
     title: 'Second Screen',
-    // variant: 'close',
+    variant: 'close',
     // onPressLeft: () => navigation.goBack(),
   });
 

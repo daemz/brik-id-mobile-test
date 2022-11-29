@@ -3,7 +3,7 @@ import {EAppStateStatus} from '@appTypes/appState.type';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 const initialState: IAppSliceRedux = {
-  loading: false,
+  loading: true,
   appState: EAppStateStatus.UNKNOWN,
 };
 

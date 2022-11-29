@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, Pressable, View} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 
@@ -13,6 +13,7 @@ interface IHeader {
   onPressLeft?: () => void;
   headerRight?: React.ReactElement;
   variant?: 'back' | 'close';
+  showHeaderLeft?: boolean;
   deps?: React.DependencyList;
 }
 
@@ -21,18 +22,24 @@ interface IHeaderLeft {
   variant?: 'back' | 'close';
 }
 
-const HeaderLeft = ({onBack, variant}: IHeaderLeft) => {
+export const BrikIcon = () => (
+  <View style={globalStyle.brikLogo}>
+    <Text style={globalStyle.brikLogoText}>BRIK</Text>
+  </View>
+);
+
+export const HeaderLeft = ({onBack, variant}: IHeaderLeft) => {
   if (variant === 'back') {
     return (
-      <TouchableOpacity style={globalStyle.headerLeftButton} onPress={onBack}>
+      <Pressable style={globalStyle.headerLeftButton} onPress={onBack}>
         <Text>{BACK_BUTTON_TEXT}</Text>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
   return (
-    <TouchableOpacity style={globalStyle.backButton} onPress={onBack}>
+    <Pressable style={globalStyle.backButton} onPress={onBack}>
       <CloseIcon />
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -41,6 +48,7 @@ const useHeader = ({
   onPressLeft,
   headerRight,
   variant = 'back',
+  showHeaderLeft = true,
   deps = [],
 }: IHeader) => {
   const navigation = useNavigation<any>();
@@ -62,7 +70,12 @@ const useHeader = ({
       headerStyle: globalStyle.headerStyle,
       headerTitleStyle: globalStyle.headerTitleStyle,
       headerTitleAlign: 'center',
-      headerLeft: () => <HeaderLeft variant={variant} onBack={onBack} />,
+      headerLeft: () =>
+        showHeaderLeft ? (
+          <HeaderLeft variant={variant} onBack={onBack} />
+        ) : (
+          <BrikIcon />
+        ),
       headerRight: () => headerRight,
     });
   }, [...deps]);

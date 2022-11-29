@@ -8,8 +8,6 @@ interface IStyles {
   sectionDescription: ViewStyle;
   highlight: ViewStyle;
   bottomButton: ViewStyle;
-  addProduct: ViewStyle;
-  headingContainer: ViewStyle;
   mainTitle: ViewStyle;
   productCardContainer: ViewStyle;
   productCardBody: ViewStyle;
@@ -47,17 +45,9 @@ const styles = StyleSheet.create<IStyles>({
     margin: 16,
     backgroundColor: appTheme['color-azure'],
   },
-  headingContainer: {
+  mainTitle: {
     marginTop: 16,
     marginBottom: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  addProduct: {
-    justifyContent: 'center',
-  },
-  mainTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     color: appTheme['color-brik-black'],

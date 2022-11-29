@@ -53,7 +53,6 @@ export const APIClient = {
     additionalHeaders?: any,
   ): Promise<Type> {
     try {
-      console.info('POST', `${BASE_URL}/${resource}/${path}`);
       let url = '';
 
       if (path) {
@@ -61,6 +60,8 @@ export const APIClient = {
       } else {
         url = resource;
       }
+
+      console.info('POST', `${BASE_URL}/${url}`);
 
       return await API.post(url, body, additionalHeaders);
     } catch (err: any) {
@@ -79,7 +80,6 @@ export const APIClient = {
     additionalHeaders?: any,
   ): Promise<Type> {
     try {
-      console.info('PATCH', `${BASE_URL}/${resource}/${path}`);
       let url = '';
 
       if (path) {
@@ -87,6 +87,8 @@ export const APIClient = {
       } else {
         url = resource;
       }
+
+      console.info('PATCH', `${BASE_URL}/${url}`);
 
       return await API.patch(url, body, additionalHeaders);
     } catch (err: any) {
@@ -105,7 +107,6 @@ export const APIClient = {
     additionalHeaders?: any,
   ): Promise<Type> {
     try {
-      console.info('PUT', `${BASE_URL}/${resource}/${path}`);
       let url = '';
 
       if (path) {
@@ -113,6 +114,8 @@ export const APIClient = {
       } else {
         url = resource;
       }
+
+      console.info('PUT', `${BASE_URL}/${url}`);
 
       return await API.put(url, body, additionalHeaders);
     } catch (err: any) {

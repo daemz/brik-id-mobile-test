@@ -2,7 +2,7 @@ import {IProduct, IProductSliceRedux} from '@appTypes/product.type';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 const initialState: IProductSliceRedux = {
-  products: undefined,
+  products: [],
 };
 
 const productSlice = createSlice({

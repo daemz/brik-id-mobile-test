@@ -21,8 +21,9 @@ const styles = StyleSheet.create<IStyles>({
   },
   scroll: {
     flex: 1,
-    flexDirection: 'column',
+    // flexDirection: 'column',
     backgroundColor: appTheme['color-white'],
+    paddingTop: 12,
   },
   itemDetailImage: {
     height: 240,
@@ -55,7 +56,7 @@ const styles = StyleSheet.create<IStyles>({
   },
   productSpecTitle: {
     flexDirection: 'row',
-    paddingTop: 16,
+    paddingVertical: 16,
     paddingHorizontal: 16,
     backgroundColor: 'transparent',
   },
